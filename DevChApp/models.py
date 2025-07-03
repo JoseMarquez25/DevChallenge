@@ -35,6 +35,7 @@ class Ruta(models.Model):
     destino = models.CharField(max_length=100)
     fecha = models.DateField()
     hora = models.TimeField()
+    
 
     def __str__(self):
         return f"{self.origen} me dirijo hacia {self.destino} y salgo a las {self.hora} del dia {self.fecha}"

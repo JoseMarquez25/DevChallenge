@@ -3,10 +3,28 @@
 
 {% block title %}Página inicial{% endblock title %}
 {% block content %}
-    <h1>Bienvenido al sistema de rutas</h1>
+    <h1>Bienvenido al sistema de rutas de la PUCE</h1>
         <ul>
             <li><a href="{% url 'usuario_list' %}">Gestión de Usuarios</a></li>
             <li><a href="{% url 'vehiculo_list' %}">Gestión de Vehículos</a></li>
             <li><a href="{% url 'ruta_list' %}">Gestión de Rutas</a></li>
         </ul>
+    <h3>Ruta Disponibles:</h3>
+    <div class = "row">
+      {% for ruta in rutas %}
+      <div class="col-sm-4">
+        <br>
+        <div class="card" style="width: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">{{ ruta.conductor }}</h5>
+            <p class="card-text">Ruta desde {{ ruta.origen }} hasta {{ ruta.destino }}. Fecha de salida: {{ ruta.fecha }} a las: {{ ruta.hora }}</p>
+              <a href="rutas/update/{{ruta.pk}}" class="btn btn-primary">
+                <i class="fa-solid fa-pencil"></i>
+              </a>
+              <a href="rutas/delete/{{ruta.pk}}" class="btn btn-danger">
+                <i class="fa-solid fa-trash"></i>
+              </a>  
+          </div>
+        </div>
+        {% endfor %}
 {% endblock content %}

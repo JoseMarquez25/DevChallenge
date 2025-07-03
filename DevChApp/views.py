@@ -5,7 +5,8 @@ from django.http import HttpResponse
 
 # === Index ===
 def index(request):
-    return render(request, 'index.html')
+    rutas = Ruta.objects.all()  
+    return render(request, 'index.html', {'rutas': rutas})
 
 
 # === USUARIO CRUD ===
