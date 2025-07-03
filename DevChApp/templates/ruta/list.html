@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Página de rutas{% endblock title %}
+{% block content %}
+<h1>Rutas</h1>
+<a href="{% url 'ruta_create' %}">Crear una nueva ruta</a>
+<ul>
+  {% for ruta in rutas %}
+    <li>{{ ruta.destino }} - {{ ruta.fecha }}
+        <a href="{% url 'ruta_update' ruta.id %}">Editar</a>
+        <a href="{% url 'ruta_delete' ruta.id %}">Eliminar</a>
+    </li>
+  {% endfor %}
+</ul>
+{% endblock content %}

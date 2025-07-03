@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Página de vehiculos{% endblock title %}
+{% block content %}
+<h1>Vehiculos</h1>
+<a href="{% url 'vehiculo_create' %}">Ingresar vehiculo</a>
+<ul>
+  {% for vehiculo in vehiculos %}
+    <li>{{ vehiculo.marca }} - {{ vehiculo.placa }}
+        <a href="{% url 'vehiculo_update' vehiculo.id %}">Editar</a>
+        <a href="{% url 'vehiculo_delete' vehiculo.id %}">Eliminar</a>
+    </li>
+  {% endfor %}
+</ul>
+{% endblock content %}
