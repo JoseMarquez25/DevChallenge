@@ -1,52 +1,282 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    min-height: 100vh;
+    color: #fff;
 }
 
+/* HEADER */
 header {
-    background-color: #1389947e;
-    color: #ffffff;
-    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 25px 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     text-align: center;
+    height: 80px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+/* NAVIGATION */
+nav {
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
 }
 
 nav ul {
     list-style: none;
     padding: 0;
-    margin: 10px 0 0;
     display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+nav ul li {
+    display: inline-block;
+}
+
+nav button {
+    background-color: #ffffff;
+    color: #222;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+nav button:hover {
+    background-color: #ffd700;
+    color: #000;
+}
+
+nav form {
+    display: inline;
+}
+
+nav .btn-danger {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+
+nav .btn-danger:hover {
+    background-color: #ff0000;
+}
+
+/* MAIN CONTENT */
+main {
+    padding: 40px 20px;
     justify-content: center;
-    gap: 20px;
+    align-items: flex-start;
+    min-height: 60vh;
+    box-sizing: border-box;
 }
 
-nav ul li a {
-    color: rgb(0, 0, 0);
+/* GENERAL ELEMENTS (optional block styling) */
+main h2, main h3 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+main p, main span, main li {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Optional: responsive tweak */
+@media screen and (max-width: 600px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav button, nav .btn-danger {
+        width: 100%;
+    }
+}
+
+
+
+/* Encabezados del contenido */
+main h1 {
+    font-size: 26px;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+main h3 {
+    font-size: 20px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    color: #ffebcd;
+}
+
+/* Lista de navegación */
+main ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto 40px;
+    max-width: 600px;
+    text-align: center;
+}
+
+main ul li {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px 20px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    transition: background 0.3s;
+}
+
+main ul li:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+main ul li a {
+    color: #00bcd4;
     text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
 }
 
-nav ul li a:hover {
+main ul li a:hover {
     text-decoration: underline;
 }
- 
-/*Listado de rutas disponibles*/
+
+/* Lista de rutas con acciones (clase especial) */
 .grid-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  padding: 0;
-  list-style-type: none;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0;
 }
 
 .grid-list li {
-  flex: 1 1 calc(50% - 20px); /* toma 50% menos el gap */
-  box-sizing: border-box;
-  border: 1px solid #ccc;
-  padding: 15px;
-  border-radius: 8px;
-  background: #f9f9f9;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 20px;
+    list-style: none;
+    position: relative;
 }
 
+.grid-list li strong {
+    font-size: 16px;
+    color: #fff;
+}
 
+.grid-list li p {
+    font-size: 14px;
+    margin: 10px 0;
+    color: #e0e0e0;
+}
 
+.grid-list li .btn {
+    padding: 8px 10px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    margin-right: 10px;
+    display: inline-block;
+}
 
+.grid-list li .btn-primary {
+    background-color: #ffffff;
+    color: #333;
+}
+
+.grid-list li .btn-primary:hover {
+    background-color: #ffd700;
+    color: #000;
+}
+
+.grid-list li .btn-danger {
+    background-color: #ff4d4d;
+    color: #fff;
+}
+
+.grid-list li .btn-danger:hover {
+    background-color: #ff0000;
+}
+
+/* === FORMULARIOS GENERALES (excepto logout) === */
+form:not(.logout-form) {
+    max-width: 500px;
+    margin: 0 auto 30px auto;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(6px);
+}
+
+form:not(.logout-form) label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 14px;
+    color: #fff;
+}
+
+form:not(.logout-form) input[type="text"],
+form:not(.logout-form) input[type="email"],
+form:not(.logout-form) input[type="password"],
+form:not(.logout-form) input[type="date"],
+form:not(.logout-form) input[type="time"],
+form:not(.logout-form) select,
+form:not(.logout-form) textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 18px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 14px;
+    outline: none;
+}
+
+form:not(.logout-form) input::placeholder,
+form:not(.logout-form) textarea::placeholder {
+    color: #ccc;
+}
+
+form:not(.logout-form) button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #333;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form:not(.logout-form) button[type="submit"]:hover {
+    background-color: #ffd700;
+    color: #000;
+}
