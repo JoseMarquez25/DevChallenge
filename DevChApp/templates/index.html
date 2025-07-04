@@ -9,17 +9,33 @@
   <li><a href="{% url 'vehiculo_list' %}">Gestión de Vehículos</a></li>
   <li><a href="{% url 'ruta_list' %}">Gestión de Rutas</a></li>
 </ul>
-<h3>Ruta Disponibles:</h3>
+<h3>Rutas Disponibles:</h3>
 <ul class="grid-list">
   {% for ruta in rutas %}
   <li>
     <strong>{{ ruta.conductor }}</strong>
-    <p>Ruta desde {{ ruta.origen }} hasta {{ ruta.destino }}. Fecha de salida: {{ ruta.fecha }} a las: {{ ruta.hora }}
-    </p>
-    <a href="rutas/update/{{ ruta.pk }}" class="btn btn-primary">
+    <p>Desde {{ ruta.origen }} hasta {{ ruta.destino }} el {{ ruta.fecha }} a las {{ ruta.hora }}</p>
+    <p>Cupos restantes: {{ ruta.cupos_restantes }}</p>
+    <p><strong>Pasajeros actuales:</strong> {{ ruta.pasajeros_count }}</p>
+
+    {% if user.is_authenticated %}
+      {% if user in ruta.pasajeros.all %}
+        <form action="{% url 'abandonar_ruta' ruta.id %}" method="post" style="display:inline;" class="logout-form">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-warning">Abandonar</button>
+        </form>
+      {% elif ruta.pasajeros.count < ruta.cupos_disponibles and user != ruta.conductor %}
+        <form action="{% url 'unirse_a_ruta' ruta.id %}" method="post" style="display:inline;" class="logout-form">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-success">Unirse</button>
+        </form>
+      {% endif %}
+    {% endif %}
+
+    <a href="{% url 'ruta_update' ruta.pk %}" class="btn btn-primary">
       <i class="fa-solid fa-pencil"></i>
     </a>
-    <a href="rutas/delete/{{ ruta.pk }}" class="btn btn-danger">
+    <a href="{% url 'ruta_delete' ruta.pk %}" class="btn btn-danger">
       <i class="fa-solid fa-trash"></i>
     </a>
   </li>
