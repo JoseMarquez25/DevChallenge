@@ -5,7 +5,6 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Mi Sitio{% endblock title %}</title>
-    <link href="{% static " bootstrap.min.css" %}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -18,9 +17,20 @@
         <h1>Mi Aplicación de Transporte seguro y sostenible</h1>
         <nav>
             <ul>
-                <li><button onclick="window.location.href='/'">Inicio</button></li>
+                <li><button onclick="window.location.href='/index/'">Inicio</button></li>
                 <li><button onclick="window.location.href='/rutas/'">Rutas</button></li>
                 <li><button onclick="window.location.href='/vehiculos/'">Vehículos</button></li>
+                <li>
+                    {% if user.is_authenticated %}
+                        <form action="{% url 'logout' %}" method="POST" class="logout-form">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">
+                                <i class="fa-solid fa-right-to-bracket"></i>
+                            </button>
+                        </form>
+
+                    {% endif %}
+                </li>
             </ul>
         </nav>
     </header>
