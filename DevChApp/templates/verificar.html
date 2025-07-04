@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Verificación</title>
+    <link rel="stylesheet" href="{% static 'css/verificacion.css' %}">
+</head>
+<body>
+    <div class="wrapper">
+        <h2>Verificación de Correo</h2>
+        <p>Se ha enviado un código a tu correo institucional. Por favor, ingrésalo a continuación:</p>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Verificar</button>
+        </form>
+    </div>
+</body>
+</html>
+
