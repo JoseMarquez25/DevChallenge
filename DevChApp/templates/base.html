@@ -1,29 +1,35 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Mi Sitio{% endblock title %}</title>
-    <link href="{% static "bootstrap.min.css" %}" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="{% static " bootstrap.min.css" %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    
-</head>                                  
+
+</head>
+
 <body>
     <header>
         <h1>Mi Aplicación de Transporte seguro y sostenible</h1>
         <nav>
             <ul>
-                <li><a href="/">Inicio</a></li>
-                <li><a href="/rutas/">Rutas</a></li>
-                <li><a href="/vehiculos/">Vehículos</a></li>
+                <li><button onclick="window.location.href='/'">Inicio</button></li>
+                <li><button onclick="window.location.href='/rutas/'">Rutas</button></li>
+                <li><button onclick="window.location.href='/vehiculos/'">Vehículos</button></li>
             </ul>
         </nav>
     </header>
+
 
     <main>
         {% block content %}
         {% endblock content %}
     </main>
 </body>
+
 </html>

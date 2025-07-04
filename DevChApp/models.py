@@ -35,7 +35,19 @@ class Ruta(models.Model):
     destino = models.CharField(max_length=100)
     fecha = models.DateField()
     hora = models.TimeField()
-    
+    cupos_disponibles = models.PositiveIntegerField(default=1)
+
+    pasajeros = models.ManyToManyField(
+        Usuario, 
+        related_name='rutas_como_pasajero', 
+        blank=True
+    )
 
     def __str__(self):
         return f"{self.origen} me dirijo hacia {self.destino} y salgo a las {self.hora} del dia {self.fecha}"
+
+    def agregar_pasajero(self, usuario):
+        if self.pasajeros.count() < self.cupos_disponibles:
+            self.pasajeros.add(usuario)
+            return True
+        return False

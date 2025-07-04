@@ -5,7 +5,11 @@ from django.http import HttpResponse
 
 # === Index ===
 def index(request):
-    rutas = Ruta.objects.all()  
+    rutas = Ruta.objects.annotate(
+        pasajeros_count=models.Count('pasajeros')
+    ).filter(
+        pasajeros_count__lt=models.F('cupos_disponibles')
+    )
     return render(request, 'index.html', {'rutas': rutas})
 
 
