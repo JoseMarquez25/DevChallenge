@@ -51,3 +51,12 @@ python3 manage.py runserver
 Windows:
 python manage.py runserver
 Una vez inicializado el servidor se deberá dirigir al siguiente enlace: http://localhost:8000
+
+Si se crea un superuser debe ser con el siguiente comando
+python manage.py createsuperuser --correo 'correo'(sin comillas)
+para activar debes cambiar la contraseña desde shell con:
+
+from DevChApp.models import Usuario
+u = Usuario.objects.get(correo='tucorreoregistrado')  # Reemplaza con tu correo real 
+u.set_password('nuevacontraseña')  # Reemplaza con la nueva contraseña 
+u.save()
