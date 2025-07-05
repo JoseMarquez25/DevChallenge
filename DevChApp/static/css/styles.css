@@ -280,3 +280,20 @@ form:not(.logout-form) button[type="submit"]:hover {
     background-color: #ffd700;
     color: #000;
 }
+
+/*Estilos del boton de cancelar*/
+#btn-cancelar {
+    background-color: #e74c3c; /* rojo */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+#btn-cancelar:hover {
+    background-color: #c0392b; /* rojo más oscuro */
+}
+
